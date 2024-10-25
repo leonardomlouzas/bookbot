@@ -21,7 +21,11 @@ def main():
     with open("books/frankenstein.txt") as f:
         content = f.read()
 
-    print(character_count(content))
+    print("--- Begin report of books/frankenstein.txt ---")
+    print(f"{world_count(content)} words found in the document\n")
+    for char, amount in character_count(content).items():
+        print(f"The '{char}' character was found {amount} times")
+    print("--- End report ---")
 
 
 if __name__ == "__main__":
