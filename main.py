@@ -3,16 +3,21 @@ def world_count(text):
     return len(words)
 
 
-def character_count(text):
+def character_count(text, is_alpha=True, ordered=True):
     characters = {}
 
     for character in text:
         character = character.lower()
         try:
-            characters[character] += 1
+            if is_alpha and character.isalpha():
+                characters[character] += 1
+            elif not is_alpha:
+                characters[character] += 1
         except KeyError:
             characters[character] = 1
 
+    if ordered:
+        return dict(sorted(characters.items(), key=lambda item: item[1], reverse=True))
     return characters
 
 
